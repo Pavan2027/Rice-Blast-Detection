@@ -128,8 +128,12 @@ Accessions are classified into five tiers:
 
 ## License
 
-This project is developed for educational purposes (BCSE207L Programming for Data Science). Data sources include the Rice Diversity Panel 1 (RDP1).
+This project is developed for educational purposes (BCSE207L Programming for Data Science). 
+
+**Data Sources:**
+- **Phenotypic Data:** [PMC5005242](https://pmc.ncbi.nlm.nih.gov/articles/PMC5005242/) - Genetic Architecture of Rice Resistance to Blast.
+- **Genotypic Data:** [Rice Diversity Panel 1 (RDP1)](http://www.ricediversity.org/data/sets/) - 44K SNP Dataset.
 
 ---
 
-<p align="center">Built with R + LightGBM + TabNet · Agritech AI · 2026</p>
+<p align="center">Built with R + LightGBM + TabNet · 2026</p>
