@@ -1,4 +1,4 @@
-# Rice Blast Resistance Detector (RBRD)
+<img width="1350" height="900" alt="resistance_vs_raw_score" src="https://github.com/user-attachments/assets/5a00c19d-373c-4493-9d2b-f30e2621dad4" /># Rice Blast Resistance Detector (RBRD)
 
 > A high-precision genomic selection pipeline powered by GBLUP, LightGBM, and TabNet. Designed to identify resistant rice accessions using the 44K Rice Diversity Panel (RDP1) and provide ensemble-based resistance scoring.
 
@@ -123,6 +123,8 @@ Accessions are classified into five tiers:
 - **Intermediate** (40-60)
 - **Moderately Susceptible** (20-40)
 - **Highly Susceptible** (0-20)
+
+<img width="1350" height="900" alt="resistance_vs_raw_score" src="https://github.com/user-attachments/assets/247da60f-f5ce-4c5d-b7d3-1903de42cc42" />
 
 ---
 
