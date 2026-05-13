@@ -42,8 +42,13 @@ row_annotation <- data.frame(
   row.names      = rownames(G_sorted)
 )
 
-# Annotation bar: subpopulation
-subpop_sorted <- Y_ml$Subpopulations[blast_order]
+# Guard: Subpopulations column may not exist in all versions of the dataset
+if ("Subpopulations" %in% colnames(Y_ml)) {
+  subpop_sorted <- Y_ml$Subpopulations[blast_order]
+} else {
+  warning("'Subpopulations' column not found in Y_ml — defaulting all to 'Unknown'")
+  subpop_sorted <- rep("Unknown", nrow(Y_ml))
+}
 subpop_sorted[subpop_sorted == "Not available"] <- "Unknown"
 row_annotation$Subpopulation <- subpop_sorted
 
@@ -83,7 +88,9 @@ annotation_colors <- list(
 # Color palette for GRM values:
 # Blue = genetically similar (high kinship), White = average, Red = dissimilar
 grm_colors <- colorRampPalette(c("#2980b9", "#ecf0f1", "#c0392b"))(100)
-
+# Color palette for SNP genotype values: 0 (reference) = yellow, 2 (alternate) = blue
+# Value 1 (heterozygous) maps to mid-color
+snp_colors <- colorRampPalette(c("#f1c40f", "#ecf0f1", "#2980b9"))(3)
 cat("Saving GRM heatmap...\n")
 
 pheatmap(
@@ -215,22 +222,13 @@ pheatmap(
 )
 
 # Verify
+# pheatmap closes its own device when filename= is used — do NOT call dev.off() here
 file_size <- file.info("heatmap_2_snp_genotype.png")$size
-cat("  -> heatmap_2_snp_genotype.png size:", file_size, "bytes\n")
+cat(" -> heatmap_2_snp_genotype.png size:", file_size, "bytes\n")
 if (file_size < 10000) {
-  cat("  WARNING: Still small — something went wrong\n")
+  cat(" WARNING: File is suspiciously small — check for errors above\n")
 } else {
-  cat("  -> SNP genotype heatmap saved successfully!\n\n")
-}
-dev.off()
-
-# Verify file was written properly
-file_size <- file.info("heatmap_2_snp_genotype.png")$size
-cat("  -> heatmap_2_snp_genotype.png size:", file_size, "bytes\n")
-if (file_size < 10000) {
-  cat("  WARNING: File is suspiciously small — check error above\n")
-} else {
-  cat("  -> SNP genotype heatmap saved successfully!\n\n")
+  cat(" -> SNP genotype heatmap saved successfully!\n\n")
 }
 
 # =====================================================================
