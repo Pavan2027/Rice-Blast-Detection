@@ -1,4 +1,3 @@
-<img width="1350" height="900" alt="resistance_vs_raw_score" src="https://github.com/user-attachments/assets/5a00c19d-373c-4493-9d2b-f30e2621dad4" /># Rice Blast Resistance Detector (RBRD)
 
 > A high-precision genomic selection pipeline powered by GBLUP, LightGBM, and TabNet. Designed to identify resistant rice accessions using the 44K Rice Diversity Panel (RDP1) and provide ensemble-based resistance scoring.
 
